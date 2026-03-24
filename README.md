@@ -1,6 +1,10 @@
-# Reproduciendo LNN en pendulo doble (Windows)
+# LNN-Pendulo-doble-transformer
 
-Proyecto completo en Python + PyTorch para entrenar una Lagrangian Neural Network (LNN) con datos de pendulo doble, evaluar en test y hacer rollout.
+Reproduction of Lagrangian Neural Networks for double pendulum dynamics, based on Greydanus et al., plus baseline and Transformer-LNN experiments.
+
+## Reproduciendo LNN en pendulo doble (Windows)
+
+Proyecto completo en Python + PyTorch/JAX para entrenar una Lagrangian Neural Network (LNN) con datos de pendulo doble, evaluar en test y hacer rollout.
 
 ## Rutas por defecto
 
