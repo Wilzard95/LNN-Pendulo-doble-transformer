@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+data/
+dataset_cache/
+experiments/
+results/
+plots/
+artifacts/
+checkpoints/
+.git_backup_from_clone/
+*.pth
+*.pkl
+*.png
+*.mp4
+*.gif

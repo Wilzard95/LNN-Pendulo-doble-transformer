@@ -1,0 +1,76 @@
+# Reproducible environment from early 2020 JAX ecosystem
+# Python 3.7 required for compatibility
+#
+# IMPORTANT: JAX 0.1.55 requires jaxlib 0.1.37 for compatibility
+# Later versions of jaxlib (0.1.50+) have incompatible API changes.
+#
+# For a working environment, use one of these approaches:
+# 1. Use pixi with the pixi.toml file (RECOMMENDED - all conda-forge packages)
+# 2. Use pip with specific versions (see commands below)
+
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lagrangian_nns"
+version = "0.1.0"
+description = "Lagrangian Neural Networks"
+readme = "README.md"
+requires-python = ">=3.7,<3.8"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Miles Cranmer"},
+    {name = "Sam Greydanus"},
+    {name = "Stephan Hoyer"},
+    {name = "Peter Battaglia"},
+    {name = "David Spergel"},
+    {name = "Shirley Ho"},
+]
+# Empty dependencies for pip - all runtime deps come from conda-forge via pixi
+dependencies = []
+
+[tool.setuptools]
+packages = ["lnn"]
+
+[project.optional-dependencies]
+dev = [
+    "ipython",
+    "jupyter",
+    "notebook",
+]
+
+# Pixi configuration for reproducible conda-forge environment
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["osx-64", "linux-64"]
+
+[tool.pixi.dependencies]
+python = "3.7.*"
+jax = "==0.1.55"
+jaxlib = "==0.1.37"  # Critical: jaxlib 0.1.37 is the compatible version for JAX 0.1.55
+numpy = "<=1.18.0"
+scipy = "<=1.4.1"
+matplotlib = "<=3.1.2"
+moviepy = "<=1.0.1"
+celluloid = "<=0.2.0"
+pillow = "<=7.0.0"
+tqdm = "<=4.41.0"
+hyperopt = "<=0.2.2"
+proglog = "<=0.1.9"
+pytest = "*"
+nbval = "*"
+ipykernel = "*"
+
+[tool.pixi.pypi-dependencies]
+lagrangian_nns = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = ["py37"]
+
+[tool.pixi.feature.py37.dependencies]
+python = "3.7.*"
+
+# Installation:
+#   pixi install
+#   pixi run python <script.py>
